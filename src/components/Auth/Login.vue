@@ -8,8 +8,23 @@
             </v-toolbar>
             <v-card-text>
               <v-form v-model="valid" ref="form" validation>
-                <v-text-field prepend-icon="person" name="email" label="email" type="email" v-model="email" :rules="emailRules"></v-text-field>
-                <v-text-field id="password" prepend-icon="lock" name="password" label="Password" type="password" v-model="password" :counter="6" :rules="passwordRules"></v-text-field>
+                <v-text-field 
+                  prepend-icon="person" 
+                  name="email" 
+                  label="Email" 
+                  type="email" 
+                  v-model="email" 
+                  :rules="emailRules"
+                ></v-text-field>
+                <v-text-field 
+                  prepend-icon="lock" 
+                  name="password" 
+                  label="Password" 
+                  type="password" 
+                  v-model="password" 
+                  :counter="6" 
+                  :rules="passwordRules"
+                ></v-text-field>
               </v-form>
             </v-card-text>
             <v-card-actions>
