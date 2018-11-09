@@ -76,7 +76,7 @@ export default {
           promo: false,
           imageSrc: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
           id: '1235'
-        },
+        }
       ]
     }
   }

@@ -24,7 +24,7 @@ export default new Router({
     },
     {
       path: '/list',
-      name: 'home',
+      name: 'list',
       component: AdList
     },
     {
