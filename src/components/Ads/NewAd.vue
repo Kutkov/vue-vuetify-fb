@@ -67,7 +67,8 @@ export default {
       title: '',
       description: '',
       promo: false,
-      valid: false
+      valid: false,
+      imageSrc: 'https://cdn-images-1.medium.com/max/1200/1*nq9cdMxtdhQ0ZGL8OuSCUQ.jpeg'
     }
   },
   methods: {
@@ -76,10 +77,12 @@ export default {
         const ad = {
           title: this.title,
           description: this.description,
-          promo: this.promo
+          promo: this.promo,
+          imageSrc: this.imageSrc
         }
 
         console.log('ad = ', ad)
+        this.$store.dispatch('createAd', ad)
       }
     }
   }
