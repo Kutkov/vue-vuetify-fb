@@ -8,6 +8,7 @@ import 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 import 'vuetify/dist/vuetify.min.css'
+import 'firebase/database'
 
 Vue.use(Vuetify)
 
@@ -16,8 +17,8 @@ Vue.config.productionTip = false
 /* eslint-disable */
 new Vue({
   el: '#app',
-  router,
   store,
+  router,
   components: { App },
   template: '<App/>',
   created() {
@@ -30,5 +31,11 @@ new Vue({
       messagingSenderId: '515803892061'
     }
     firebase.initializeApp(config)
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.$store.dispatch('autoLoginUser', user)
+      }
+    })
   }
 })

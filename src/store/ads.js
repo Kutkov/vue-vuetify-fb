@@ -1,3 +1,21 @@
+import firebase from 'firebase/app'
+import 'firebase/app'
+import 'firebase/auth'
+import 'firebase/firestore'
+import 'firebase/database'
+// import 'vuetify/dist/vuetify.min.css'
+
+class Ad {
+    constructor(title, description, imageSrc = '', id = null, promo = false) {
+        this.title = title
+        this.description = description
+        // this.ownerId = ownerId
+        this.imageSrc = imageSrc
+        this.promo = promo
+        this.id = id
+    }
+}
+
 export default {
     state: {
         ads: [
@@ -30,22 +48,39 @@ export default {
         }
     },
     actions: {
-        createAd({commit}, payload) {
-            payload.id = 'svsvdf'
+        async createAd({ commit, getters }, payload) {
+            commit('clearError')
+            commit('setLoading', true)
 
-            commit('createAd', payload)
+            try {
+                const newAd = new Ad(
+                    payload.title,
+                    payload.description,
+                    getters.user.id,
+                    payload.imageSrc,
+                    payload.promo
+                )
+
+                const fbValue = await firebase.database().ref('ads').push(newAd)
+                console.log(fbValue);
+            } catch (error) {
+                commit('setError', error.message)
+                commit('setLoading', false)
+                throw error
+            }
+            // commit('createAd', payload)
         }
     },
     getters: {
-        ads (state) {
+        ads(state) {
             return state.ads
         },
-        promoAds (state) {
+        promoAds(state) {
             return state.ads.filter(ad => {
                 return ad.promo
             })
         },
-        myAds (state) {
+        myAds(state) {
             return state.ads
         },
         adById(state) {
