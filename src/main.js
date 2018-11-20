@@ -3,12 +3,14 @@ import App from './App'
 import router from './router'
 import store from './store'
 import Vuetify from 'vuetify'
-import firebase from 'firebase/app'
-import 'firebase/app'
-import 'firebase/auth'
-import 'firebase/firestore'
+import * as firebase from 'firebase'
+// import firebase from 'firebase/app'
+// import 'firebase/app'
+// import 'firebase/auth'
+// import 'firebase/firestore'
 import 'vuetify/dist/vuetify.min.css'
-import 'firebase/database'
+// import 'firebase/database'
+// import 'firebase/storage'
 
 Vue.use(Vuetify)
 
@@ -37,5 +39,7 @@ new Vue({
         this.$store.dispatch('autoLoginUser', user)
       }
     })
+
+    this.$store.dispatch('fetchAds')
   }
 })
