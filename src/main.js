@@ -4,16 +4,19 @@ import router from './router'
 import store from './store'
 import Vuetify from 'vuetify'
 import * as firebase from 'firebase'
-// import firebase from 'firebase/app'
-// import 'firebase/app'
-// import 'firebase/auth'
-// import 'firebase/firestore'
+import BuyModalComponent from '@/components/Shared/BuyModal'
 import 'vuetify/dist/vuetify.min.css'
-// import 'firebase/database'
-// import 'firebase/storage'
 
-Vue.use(Vuetify)
 
+// Helpers
+import colors from 'vuetify/es5/util/colors'
+
+Vue.use(Vuetify, {
+  theme: {
+    primary: colors.cyan.lighten1
+  }
+})
+Vue.component('app-buy-modal', BuyModalComponent)
 Vue.config.productionTip = false
 
 /* eslint-disable */

@@ -1,16 +1,5 @@
 import * as firebase from 'firebase'
 
-// import firebase from 'firebase/app'
-// import 'firebase/app'
-// import 'firebase/auth'
-// import 'firebase/firestore'
-// import 'firebase/database'
-// import 'firebase/storage'
-// import 'firebase/functions'
-// import 'firebase/messaging'
-
-// import 'vuetify/dist/vuetify.min.css'
-
 class Ad {
     constructor(title, description, ownerId, imageSrc = '', promo = false, id = null) {
         this.title = title
